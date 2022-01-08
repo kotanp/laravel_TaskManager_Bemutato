@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users=User::all();
+        return response()->json($users);
     }
 
     /**
@@ -44,9 +45,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($userId)
     {
-        //
+        $user=User::find($userId);
+        return response()->json($user);
     }
 
     /**
@@ -78,8 +80,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($userId)
     {
-        //
+        $user=Task::find($userId);
+        $user->delete();
     }
 }

@@ -5,14 +5,10 @@ class Ajax{
         tomb.splice(0,tomb.length);
         $.ajax({url: apivegpont, type: "GET",success: function(result){
             result.forEach(element => {
-                console.log(element);
                 tomb.push(element);
             });
             callback(tomb);
-            },error: function (data, textStatus, errorThrown) {
-                console.log(data);
-        
-            },
+            }
         });
     }
 
@@ -23,25 +19,7 @@ class Ajax{
             type: "POST", 
             data:ujAdat,
             // error: function (data, textStatus, errorThrown) {
-            //     console.log(data);
-        
-            // },
-        });
-    }
-    
-    postRedirectAjax(apivegpont, ujAdat){
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': this.token},
-            url: apivegpont, 
-            type: "POST", 
-            data:ujAdat,
-            success: function(result){
-                //console.log(result.url);
-                location.assign(result.url);
-            },
-            // error: function (data, textStatus, errorThrown) {
-            //     console.log(data);
-            
+            //     console.log(eval("(" + data.responseText + ")").message);
             // },
         });
     }
@@ -50,7 +28,7 @@ class Ajax{
         $.ajax({
             headers: {'X-CSRF-TOKEN': this.token},
             url: apivegpont+"/"+id, 
-            type: "DELETE",
+            type: "DELETE"
         });
     }
 
